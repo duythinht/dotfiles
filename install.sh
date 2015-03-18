@@ -25,7 +25,7 @@ cp -rf .zshrc ~/
 cp -rf .cmd_alias ~/
 mkdir -p ~/.themes
 cp -rf iris-light ~/.themes
-
+if type gconftool-2; then gconftool-2 --load gnome-terminal-conf.xml; fi
 
 # Install vim
 mkdir -p ~/.vim/bundle/
@@ -39,4 +39,3 @@ echo """
 Run this command to import terminal color scheme
 gconftool-2 --load gnome-terminal-conf.xml
 """
-if type gconftool-2; then gconftool-2 --load gnome-terminal-conf.xml; fi
