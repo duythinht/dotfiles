@@ -1,0 +1,2 @@
+opentmux="tmux a || tmux"
+ls="ls --color"
