@@ -3,4 +3,4 @@ One click setup environment
 
 To set up your development environment, run
 	
-	curl -sSL https://raw.githubusercontent.com/duythinht/one_click_setup/master/install.sh | sh
+	curl -sSL https://raw.githubusercontent.com/duythinht/dotfiles/master/install.sh | sh
