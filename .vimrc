@@ -31,7 +31,6 @@ Plugin 'tfnico/vim-gradle'
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
 Plugin 'L9'
-Plugin 'CSApprox'
 
 " non github repos
 " ...
@@ -96,9 +95,7 @@ syntax enable     " enable syntax hightlight
 
 " Personal settings
 
-let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 colorscheme inori " using inori colorscheme
-set background=dark " change background to dark
 hi LineNr ctermbg=None
 
 " Tabs
