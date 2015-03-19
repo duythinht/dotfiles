@@ -23,7 +23,7 @@ prompt redhat
 PROMPT="[%{$fg_bold[yellow]%}%n@%m %{$fg_bold[blue]%}%1~%{$reset_color%}]$ "
  
 # Run commands alias
-[ -f ~/.cmd_alias ] && while read line; do eval "alias $line"; done < ~/.cmd_alias
+[ -f ~/.alias ] && while read line; do eval "alias $line"; done < ~/.cmd_alias
  
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
