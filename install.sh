@@ -23,6 +23,7 @@ cp -rf .vimrc ~/
 cp -rf .tmux.conf ~/
 cp -rf .zshrc ~/
 cp -rf .cmd_alias ~/
+cp -rf .zlogin ~/
 mkdir -p ~/.themes
 cp -rf iris-light ~/.themes
 if type gconftool-2; then gconftool-2 --load gnome-terminal-conf.xml; fi
