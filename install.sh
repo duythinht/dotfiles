@@ -17,12 +17,12 @@ esac
 
 # Set up runtime config...
 cd ~/
-git clone https://github.com/duythinht/one_click_setup.git
-cd ~/one_click_setup
+git clone https://github.com/duythinht/dotfiles.git
+cd ~/dotfiles
 cp -rf .vimrc ~/
 cp -rf .tmux.conf ~/
 cp -rf .zshrc ~/
-cp -rf .cmd_alias ~/
+cp -rf .alias ~/
 cp -rf .zlogin ~/
 mkdir -p ~/.themes
 cp -rf iris-light ~/.themes
