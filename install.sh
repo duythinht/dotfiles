@@ -1,5 +1,4 @@
 #!/bin/sh
-#sudo apt-get install -y git vim-gtk zsh
 
 case "$(uname)" in
 	"Darwin")
@@ -21,36 +20,20 @@ cd ~/
 git clone https://github.com/duythinht/dotfiles.git
 cd ~/dotfiles
 
-FILES="
-.vimrc
-.tmux.conf
-.zshrc
-.alias
-.zlogin
-"
-
-for f in $FILES do
+while read f; do
+	echo "Copying file $f..."
 	cp -rf $f ~/
-done
+done < Dotfiles
+echo "Copy files done!"
 
-cp -rf .vimrc ~/
-cp -rf .tmux.conf ~/
-cp -rf .zshrc ~/
-cp -rf .alias ~/
-cp -rf .zlogin ~/
 mkdir -p ~/.themes
 cp -rf iris-light ~/.themes
-if type gconftool-2; then gconftool-2 --load gnome-terminal-conf.xml; fi
 
 # Install vim
 mkdir -p ~/.vim/bundle/
 cd ~/.vim/bundle
-git clone https://github.com/gmarik/Vundle.vim.git vundle
+[ ! -d vundle ] && git clone https://github.com/gmarik/Vundle.vim.git vundle
 
 # Change shell to zsh
 chsh -s /bin/zsh
-
-echo """
-Run this command to import terminal color scheme
-gconftool-2 --load gnome-terminal-conf.xml
-"""
+echo "Dotfiles has been installed!"
