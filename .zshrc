@@ -17,10 +17,9 @@ compinit
 # Enable prompt themes
 autoload -U promptinit
 promptinit
-prompt redhat
-#PROMPT=[%F{2}%n@%m\ %f%F{12}%1~%f]$\ 
-#End of prompt themes
-PROMPT="[%{$fg_bold[red]%}%n@%m %{$fg_bold[cyan]%}%1~%{$reset_color%}]$ "
+# prompt redhat
+PROMPT="[%{$fg_bold[black]%}%n@%m %{$fg_bold[cyan]%}%1~%{$reset_color%}]$ "
+# End of prompt theme
  
 # Run commands alias
 [ -f ~/.alias ] && while read line; do eval "alias $line"; done < ~/.alias
