@@ -17,8 +17,9 @@ compinit
 # Enable prompt themes
 autoload -U promptinit
 promptinit
-# prompt redhat
 PROMPT="[%B%F{172}%n@%m%f %F{29}%c%f%b]$ "
+# Fix ls colors Mac OS X
+LSCOLORS="Gxfxcxdxbxegedabagacad"
 # End of prompt theme
  
 # Run commands alias
