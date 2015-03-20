@@ -95,8 +95,8 @@ syntax enable     " enable syntax hightlight
 
 " Personal settings
 
-colorscheme inori " using inori colorscheme
-hi LineNr ctermbg=None
+silent! colorscheme inori " using inori colorscheme
+"hi LineNr ctermbg=None
 
 " Tabs
 "hi TabLine      guifg=208 guibg=None gui=None ctermfg=11 ctermbg=None cterm=None

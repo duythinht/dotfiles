@@ -17,8 +17,22 @@ esac
 
 # Set up runtime config...
 cd ~/
+[ -f dotfiles ] && rm -rf dotfiles
 git clone https://github.com/duythinht/dotfiles.git
 cd ~/dotfiles
+
+FILES=(
+	'.vimrc'
+	'.tmux.conf'
+	'.zshrc'
+	'.alias'
+	'.zlogin'
+)
+
+for f in $FILES do
+	cp -rf $f ~/
+done
+
 cp -rf .vimrc ~/
 cp -rf .tmux.conf ~/
 cp -rf .zshrc ~/

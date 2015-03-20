@@ -20,7 +20,7 @@ promptinit
 prompt redhat
 #PROMPT=[%F{2}%n@%m\ %f%F{12}%1~%f]$\ 
 #End of prompt themes
-PROMPT="[%{$fg_bold[yellow]%}%n@%m %{$fg_bold[blue]%}%1~%{$reset_color%}]$ "
+PROMPT="[%{$fg_bold[red]%}%n@%m %{$fg_bold[cyan]%}%1~%{$reset_color%}]$ "
  
 # Run commands alias
 [ -f ~/.alias ] && while read line; do eval "alias $line"; done < ~/.alias
