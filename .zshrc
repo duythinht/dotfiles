@@ -18,8 +18,10 @@ compinit
 autoload -U promptinit
 promptinit
 PROMPT="[%B%F{172}%n@%m%f %F{29}%c%f%b]$ "
-# Fix ls colors Mac OS X
-LSCOLORS="Gxfxcxdxbxegedabagacad"
+# Fix ls colors
+LSCOLORS="gxfxcxdxbxegedabagacad"
+LS_COLORS='di=0;36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:'
+export LS_COLORS
 # End of prompt theme
  
 # Run commands alias
