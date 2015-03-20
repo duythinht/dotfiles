@@ -18,7 +18,7 @@ compinit
 autoload -U promptinit
 promptinit
 # prompt redhat
-PROMPT="[%{$fg_bold[black]%}%n@%m %{$fg_bold[cyan]%}%1~%{$reset_color%}]$ "
+PROMPT="[%{$fg_bold[red]%}%n@%m %{$fg_bold[cyan]%}%1~%{$reset_color%}]$ "
 # End of prompt theme
  
 # Run commands alias
