@@ -171,24 +171,24 @@ TerminalWindow GtkNotebook.notebook {
 
 TerminalWindow .scrollbars-junction,
 TerminalWindow .scrollbar.trough {
-    background-color: @theme_bg_color;
+    background-color: #2a2a2a;
 }
 
 TerminalWindow .scrollbar.button,
 TerminalWindow .scrollbar.button:active,
 TerminalWindow .scrollbar.button:active:hover {
-    color: shade(@theme_bg_color, 0.6);
+    color: shade(@theme_text_color, 0.6);
 }
 
 TerminalWindow .scrollbar.slider {
     border-color: mix(shade(@theme_bg_color, 0.87), @theme_text_color, 0.21);
-    background-color: mix(@theme_bg_color, @theme_text_color, 0.21);
+    background-color: @theme_text_color;
 }
 
 TerminalWindow .scrollbar.slider:hover,
 TerminalWindow .scrollbar.slider.vertical:hover {
     border-color: mix(shade(@theme_bg_color, 0.87), @theme_text_color, 0.31);
-    background-color: mix(@theme_bg_color, @theme_text_color, 0.31);
+    background-color: alpha(@theme_text_color, 0.65);
 }
 
 TerminalWindow .scrollbar.slider:active,
