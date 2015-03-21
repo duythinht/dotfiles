@@ -1,5 +1,6 @@
 #!/bin/sh
 
+git pull origin master
 while read f; do
 	echo "Backup file $f..."
 	cp -rf ~/$f ./
