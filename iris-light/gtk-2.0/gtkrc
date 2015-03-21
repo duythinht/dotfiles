@@ -214,7 +214,7 @@ style "default"
 
 	bg[NORMAL] = @bg_color
 	bg[PRELIGHT] = shade (0.98, @bg_color)
-	bg[SELECTED] = @selected_bg_color
+	bg[SELECTED] = "#AFD787"
 	bg[ACTIVE] = shade (0.9, @bg_color)
 	bg[INSENSITIVE] = @bg_color
 
