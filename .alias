@@ -1,2 +1,2 @@
 opentmux="tmux a || tmux"
-ls="ls -G"
+ls="ls --color"
