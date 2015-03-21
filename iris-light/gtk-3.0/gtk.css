@@ -54,20 +54,24 @@
 @define-color osd_fg #333333;
 @define-color osd_bg #fafafa;
 
+
+@define-color wm_bg_color #2d2d2d;
+@define-color wm_fg_color #dcdcdc;
+
 /* window manager colors */
-/*
-@define-color wm_bg @menubar_bg_color;
-@define-color wm_border_focused @menubar_bg_color;
-@define-color wm_border_unfocused shade(@theme_bg_color, 0.92);
-@define-color wm_title_focused @menubar_fg_color;
-@define-color wm_title_unfocused alpha(@menubar_fg_color, 0.95);
-@define-color wm_icons_focused @theme_fg_color;
-@define-color wm_icons_focused_prelight @theme_selected_bg_color;
-@define-color wm_icons_focused_pressed @theme_selected_bg_color;
+
+@define-color wm_bg @wm_bg_color;
+@define-color wm_border_focused @wm_bg_color;
+@define-color wm_border_unfocused shade(@wm_bg_color, 0.92);
+@define-color wm_title_focused @wm_fg_color;
+@define-color wm_title_unfocused alpha(@wm_fg_color, 0.95);
+@define-color wm_icons_focused @wp_fg_color;
+@define-color wm_icons_focused_prelight alpha(@wm_fg_color, 0.65);
+@define-color wm_icons_focused_pressed alpha(@wm_fg_color, 0.45);
 @define-color wm_icons_unfocused alpha(@theme_fg_color, 0.95);
 @define-color wm_icons_unfocused_prelight shade(@theme_selected_bg_color, 1.15);
 @define-color wm_icons_unfocused_pressed @theme_selected_bg_color;
-*/
+
 @import url("gtk-widgets.css");
 @import url("gtk-widgets-assets.css");
 @import url("apps/gnome-applications.css");
