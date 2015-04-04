@@ -1,2 +1,3 @@
 opentmux="tmux a || tmux"
 ls="ls --color"
+gp="export GOPATH=`pwd`"
