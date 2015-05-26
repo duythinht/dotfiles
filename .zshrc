@@ -31,3 +31,6 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm" # Load GVM into shell
 
 export PATH=$PATH:/usr/local/go/bin
+source virtualenvwrapper.sh
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
+[[ -s "/Users/duythinht/.gvm/scripts/gvm" ]] && source "/Users/duythinht/.gvm/scripts/gvm"
