@@ -1,10 +1,20 @@
+" Automatically reload vim config(s)
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
+
 set nocompatible               " be iMproved
 set hidden
+set modeline
 filetype off                   " required!
 set omnifunc=syntaxcomplete#Complete
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
+
+set autoread
+set ruler
 
 " let Vundle manage Vundle
 " required!
@@ -16,18 +26,21 @@ Plugin 'gmarik/vundle'
 Plugin 'duythinht/inori'
 Plugin 'bling/vim-airline'
 Plugin 'kien/ctrlp.vim'
-"Plugin 'wincent/command-t'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mattn/emmet-vim'
-Plugin 'klen/python-mode'
-Plugin 'davidhalter/jedi-vim'
+"Plugin 'klen/python-mode'
+"Plugin 'davidhalter/jedi-vim'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
 Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tfnico/vim-gradle'
+Plugin 'chase/vim-ansible-yaml'
+Plugin 'mkitt/tabline.vim'
+Plugin 'luochen1990/rainbow'
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
 Plugin 'L9'
@@ -46,12 +59,6 @@ set guioptions-=L
 " Change the key
 let mapleader=","
 nnoremap ; :
-
-" stop using arrow key
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
 
 " Re-map move around for wrapping line
 nnoremap j gj
@@ -77,14 +84,15 @@ set pastetoggle=<F2>
 " Generic setings
 
 set nowrap        " don't wrap lines
-set tabstop=2     " a tab is four spaces
+set expandtab			" tab by spaces
+set tabstop=2     " a tab is two spaces
 set backspace=2   " allow backspacing over everything in insert mode
+set shiftwidth=2  " number of spaces to use for autoindenting
+set softtabstop=2 " tabstap is 2
 set autoindent    " always set autoindenting on
 set cindent		  " copy the previous indentation on autoindenting
 set smartindent   " smart indent
 set number        " always show line numbers
-set shiftwidth=2  " number of spaces to use for autoindenting
-set softtabstop=2 " tabstap is 4
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch     " set show matching parenthesis
 set smarttab      " insert tabs on the start of a line according to shiftwidth, not tabstop
@@ -104,7 +112,7 @@ silent! colorscheme inori " using inori colorscheme
 "hi TabLineSel   guifg=100 guibg=None gui=bold ctermfg=160 ctermbg=None cterm=bold
 
 " Indent for FileType
-autocmd FileType python setl sw=4 sts=4 et
+autocmd FileType python setl sw=2 sts=2 et
 "autocmd FileType html setl sw=4 sts=4 et
 
 " Airline
@@ -144,53 +152,6 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.o,*.obj,.git,*/vendor/*,*/targe
 " autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 " autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 " autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-
-" Python-mode
-" Activate rope
-" Keys:
-" K             Show python docs
-" <Ctrl-Space>  Rope autocomplete
-" <Ctrl-c>g     Rope goto definition
-" <Ctrl-c>d     Rope show documentation
-" <Ctrl-c>f     Rope find occurrences
-" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
-" [[            Jump on previous class or function (normal, visual, operator modes)
-" ]]            Jump on next class or function (normal, visual, operator modes)
-" [M            Jump on previous class or method (normal, visual, operator modes)
-" ]M            Jump on next class or method (normal, visual, operator modes)
-let g:pymode_rope = 0
-let g:pymode_options_max_line_length = 999
-" Documentation
-let g:pymode_doc = 1
-let g:pymode_doc_key = 'K'
-
-"Linting
-
-
-let g:pymode_lint = 0
-let g:pymode_lint_checker = "pyflakes,pep8"
-" Auto check on save
-let g:pymode_lint_write = 1
-
-" Support virtualenv
-let g:pymode_virtualenv = 1
-
-" Enable breakpoints plugin
-let g:pymode_breakpoint = 1
-let g:pymode_breakpoint_key = '<leader>b'
-
-" syntax highlighting
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
-
-" Don't autofold code
-let g:pymode_folding = 0
-" Don't show preview
-autocmd FileType python setlocal completeopt-=preview
-let g:jedi#popup_on_dot = 0
-
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$']
 
@@ -201,6 +162,43 @@ func! DeleteTrailingWS()
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
-noremap <leader>t :call DeleteTrailingWS()<CR>
+noremap <leader>DT :call DeleteTrailingWS()<CR>
+
+" open new tab
+noremap <leader>t <Esc>:tabnew<CR>
+
+" auto insert end block
 inoremap {<CR>  {<CR>}<Esc>O
 inoremap [<CR>	[<CR>]<Esc>O<Tab>
+
+" Silver searcher
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+" Rainbow settings
+let g:rainbow_active = 0
+let g:rainbow_conf = {
+    \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+    \   'ctermfgs': ['red', '172', 'brown', 'lightyellow', 'lightmagenta', 'darkgreen'],
+    \   'operators': '_,_',
+    \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+    \   'separately': {
+    \       '*': {},
+    \       'tex': {
+    \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+    \       },
+    \       'lisp': {
+    \           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+    \       },
+    \       'vim': {
+    \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+    \       },
+    \       'html': {
+    \           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+    \       },
+    \       'css': 0,
+    \   }
+    \}
+
+noremap <leader>R :RainbowToggle<CR>
