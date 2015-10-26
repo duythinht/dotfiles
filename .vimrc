@@ -7,15 +7,15 @@ augroup END
 set nocompatible               " be iMproved
 set hidden
 set modeline
-filetype off                   " required!
 setlocal completeopt-=preview
-set omnifunc=syntaxcomplete#Complete
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#begin()
-
 set autoread
 set ruler
+set foldmethod=syntax
+set foldlevel=17
+set omnifunc=syntaxcomplete#Complete
+filetype off                   " required!
+set rtp+=~/.vim/bundle/vundle/
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
@@ -87,10 +87,6 @@ set pastetoggle=<F2>
 
 set nowrap        " don't wrap lines
 set expandtab			" tab by spaces
-set tabstop=2     " a tab is two spaces
-set backspace=2   " allow backspacing over everything in insert mode
-set shiftwidth=2  " number of spaces to use for autoindenting
-set softtabstop=2 " tabstap is 2
 set autoindent    " always set autoindenting on
 set cindent		  " copy the previous indentation on autoindenting
 set smartindent   " smart indent
@@ -112,6 +108,11 @@ silent! colorscheme inori " using inori colorscheme
 "hi TabLine      guifg=208 guibg=None gui=None ctermfg=11 ctermbg=None cterm=None
 "hi TabLineFill  guifg=None guibg=None gui=None ctermfg=None ctermbg=None cterm=None
 "hi TabLineSel   guifg=100 guibg=None gui=bold ctermfg=160 ctermbg=None cterm=bold
+
+set tabstop=2     " a tab is two spaces
+set backspace=2   " allow backspacing over everything in insert mode
+set shiftwidth=2  " number of spaces to use for autoindenting
+set softtabstop=2 " 
 
 " Indent for FileType
 autocmd FileType python setl sw=2 sts=2 et
