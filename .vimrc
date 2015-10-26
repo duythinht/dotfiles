@@ -8,6 +8,7 @@ set nocompatible               " be iMproved
 set hidden
 set modeline
 filetype off                   " required!
+setlocal completeopt-=preview
 set omnifunc=syntaxcomplete#Complete
 
 set rtp+=~/.vim/bundle/vundle/
@@ -51,6 +52,7 @@ Plugin 'L9'
 call vundle#end()
 
 filetype plugin indent on     " required!
+filetype on
 
 " Hide MacVim scrollbar
 set guioptions-=r
