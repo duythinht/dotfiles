@@ -176,6 +176,7 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
+
 " Rainbow settings
 let g:rainbow_active = 0
 let g:rainbow_conf = {
