@@ -42,6 +42,7 @@ Plugin 'tfnico/vim-gradle'
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'mkitt/tabline.vim'
 Plugin 'luochen1990/rainbow'
+Plugin 'fatih/vim-go'
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
 Plugin 'L9'

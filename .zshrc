@@ -34,3 +34,8 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH=$PATH:/usr/local/go/bin
 source virtualenvwrapper.sh
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
+export GOROOT=/usr/local/go/
+export PATH=$PATH:$GOROOT/bin
+export GOPATH=$HOME/workspace/go
+export PATH=$PATH:$GOPATH/bin
+
