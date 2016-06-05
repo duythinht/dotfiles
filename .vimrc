@@ -26,6 +26,7 @@ Plugin 'gmarik/vundle'
 " original repos on github
 Plugin 'duythinht/inori'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'kchmck/vim-coffee-script'
@@ -181,6 +182,7 @@ if executable('ag')
 endif
 
 
+
 " Rainbow settings
 let g:rainbow_active = 0
 let g:rainbow_conf = {
@@ -207,3 +209,5 @@ let g:rainbow_conf = {
     \}
 
 noremap <leader>R :RainbowToggle<CR>
+
+let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
