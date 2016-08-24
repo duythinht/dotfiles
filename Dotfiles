@@ -1,4 +1,5 @@
 .vimrc
+.zaddrc
 .gvimrc
 .tmux.conf
 .zshrc

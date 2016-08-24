@@ -9,25 +9,20 @@ case "$(uname)" in
 	"Linux")
 		sudo add-apt-repository -y ppa:numix/ppa
 		sudo apt-get update
-		sudo apt-get install -y git vim-gtk zsh tree
-		sudo apt-get install numix-gtk-theme numix-icon-theme
+		sudo apt-get install -y git zsh tree
 	;;
 esac
 
 # Set up runtime config...
-cd ~/
-[ -d dotfiles ] && rm -rf dotfiles
-git clone https://github.com/duythinht/dotfiles.git
-cd ~/dotfiles
+git clone https://github.com/duythinht/dotfiles.git ~/workspace/dotfiles
+mkdir -p ~/workspace
+cd ~/workspace/dotfiles
 
 while read f; do
 	echo "Copying file $f..."
 	cp -rf $f ~/
 done < Dotfiles
 echo "Copy files done!"
-
-mkdir -p ~/.themes
-cp -rf iris-light ~/.themes
 
 # Install vim
 mkdir -p ~/.vim/bundle/

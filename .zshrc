@@ -34,8 +34,16 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH=$PATH:/usr/local/go/bin
 source virtualenvwrapper.sh
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
-export GOROOT=/usr/local/go/
-export PATH=$PATH:$GOROOT/bin
-export GOPATH=$HOME/workspace/go
-export PATH=$PATH:$GOPATH/bin
 
+export GOPATH=$HOME/workspace/go
+export PATH=$PATH:$GOPATH/bin/
+export NOMAD_ADDR=http://10.60.3.231:4646/
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+export DOCKER_TLS_VERIFY="1"
+export DOCKER_HOST="tcp://192.168.99.100:2376"
+export DOCKER_CERT_PATH="/Users/duythinht/.docker/machine/machines/default"
+export DOCKER_MACHINE_NAME="default"
+# Run this command to configure your shell:
+# eval $(docker-machine env)

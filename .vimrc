@@ -26,11 +26,11 @@ Plugin 'gmarik/vundle'
 " original repos on github
 Plugin 'duythinht/inori'
 Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mattn/emmet-vim'
+Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'klen/python-mode'
 "Plugin 'davidhalter/jedi-vim'
 Plugin 'Valloric/YouCompleteMe'
@@ -44,6 +44,7 @@ Plugin 'chase/vim-ansible-yaml'
 Plugin 'mkitt/tabline.vim'
 Plugin 'luochen1990/rainbow'
 Plugin 'fatih/vim-go'
+Plugin 'fatih/vim-hclfmt'
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
 Plugin 'L9'
@@ -87,19 +88,20 @@ vmap <Leader>P "+P
 set pastetoggle=<F2>
 " Generic setings
 
-set nowrap        " don't wrap lines
-set expandtab			" tab by spaces
-set autoindent    " always set autoindenting on
-set cindent		  " copy the previous indentation on autoindenting
-set smartindent   " smart indent
-set number        " always show line numbers
-set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
-set showmatch     " set show matching parenthesis
-set smarttab      " insert tabs on the start of a line according to shiftwidth, not tabstop
-set incsearch     " show search matches as you type
-set nobackup	  " no backup
-set noswapfile	  " no swap files
-syntax enable     " enable syntax hightlight
+set nowrap          " don't wrap lines
+set expandtab			  " tab by spaces
+set autoindent      " always set autoindenting on
+set cindent		      " copy the previous indentation on autoindenting
+set smartindent     " smart indent
+set number          " always show line numbers
+set relativenumber  " enter relativenumber mode
+set shiftround      " use multiple of shiftwidth when indenting with '<' and '>'
+set showmatch       " set show matching parenthesis
+set smarttab        " insert tabs on the start of a line according to shiftwidth, not tabstop
+
+
+set noswapfile	    " no swap files
+syntax enable       " enable syntax hightlight
 
 " Personal settings
 
@@ -114,7 +116,7 @@ silent! colorscheme inori " using inori colorscheme
 set tabstop=2     " a tab is two spaces
 set backspace=2   " allow backspacing over everything in insert mode
 set shiftwidth=2  " number of spaces to use for autoindenting
-set softtabstop=2 " 
+set softtabstop=2 "
 
 " Indent for FileType
 autocmd FileType python setl sw=2 sts=2 et
@@ -151,7 +153,7 @@ let g:airline_symbols.whitespace = 'Ξ'
 
 
 " Command-T
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.o,*.obj,.git,*/vendor/*,*/target/*,*/build/*,*/node_modules/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.o,*.obj,.git,*/vendor/*,*/target/*,*/build/*,*/node_modules/*,*.a
 
 " autocmd FileType python set omnifunc=pythoncomplete#Complete
 " autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
@@ -182,7 +184,6 @@ if executable('ag')
 endif
 
 
-
 " Rainbow settings
 let g:rainbow_active = 0
 let g:rainbow_conf = {
@@ -210,4 +211,5 @@ let g:rainbow_conf = {
 
 noremap <leader>R :RainbowToggle<CR>
 
-let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+let g:ycm_global_ycm_extra_conf = '~/.ycm/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0
