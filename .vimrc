@@ -34,6 +34,7 @@ Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'klen/python-mode'
 "Plugin 'davidhalter/jedi-vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'l3nkz/ycmconf'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
@@ -210,6 +211,3 @@ let g:rainbow_conf = {
     \}
 
 noremap <leader>R :RainbowToggle<CR>
-
-let g:ycm_global_ycm_extra_conf = '~/.ycm/.ycm_extra_conf.py'
-let g:ycm_confirm_extra_conf = 0
