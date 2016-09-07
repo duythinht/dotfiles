@@ -19,7 +19,7 @@ yui_current_dir() {
   print -P "%F{208}[%f%~%F{208}]%f - "
 }
 yui_count_job() {
-  print -P '%F{208}[%F{30}%!%F{208}]%f'
+  print -P '%F{208}[%F{178}%!%F{208}]%f'
 }
 
 function precmd() {
