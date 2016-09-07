@@ -1,7 +1,32 @@
 # user, host, full path, and time/date
 # on two lines for easier vgrepping
 # entry in a nice long thread on the Arch Linux forums: http://bbs.archlinux.org/viewtopic.php?pid=521888#p521888
-PROMPT=$'%{\e[0;34m%}%B┌─[%b%{\e[0m%}%{\e[1;32m%}%n%{\e[1;34m%}@%{\e[0m%}%{\e[0;36m%}%m%{\e[0;34m%}%B]%b%{\e[0m%} - %b%{\e[0;34m%}%B[%b%{\e[1;37m%}%~%{\e[0;34m%}%B]%b%{\e[0m%} - %{\e[0;34m%}%B[%b%{\e[0;33m%}%!%{\e[0;34m%}%B]%b%{\e[0m%}
-%{\e[0;34m%}%B└─%B[%{\e[1;35m%}$%{\e[0;34m%}%B]%{\e[0m%}%b '
-RPROMPT='[%*]'
-PS2=$' \e[0;34m%}%B>%{\e[0m%}%b '
+yui_git_branch() {
+  local branch
+  if branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null); then
+    if [[ "$branch" == "HEAD" ]]; then
+      branch='detached*'
+    fi
+    echo "%F{208}[%f%F{9}⎇ $branch%F{208}]%f - "
+  fi
+}
+
+yui_user_at_host() {
+  print -P "%F{208}┌─[%F{78}%n%F{248}@%F{37}%m%F{208}]%f - "
+}
+
+yui_current_dir() {
+  print -P "%F{208}[%f%~%F{208}]%f - "
+}
+yui_count_job() {
+  print -P '%F{208}[%F{30}%!%F{208}]%f'
+}
+
+function precmd() {
+  print -P $(yui_user_at_host)$(yui_current_dir)$(yui_git_branch)$(yui_count_job)
+}
+
+#PROMPT="%F{208}└─[%f$%F{208}]%f "
+PROMPT="%F{208}└─▶ %f"
+
+RPROMPT=[%*]
