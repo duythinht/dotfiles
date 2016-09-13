@@ -7,12 +7,12 @@ yui_git_branch() {
     if [[ "$branch" == "HEAD" ]]; then
       branch='detached*'
     fi
-    echo "%F{208}[%f%F{9}⎇ $branch%F{208}]%f - "
+    echo "%F{208}[%f%F{9}\u2387 $branch%F{208}]%f - "
   fi
 }
 
 yui_user_at_host() {
-  print -P "%F{208}┌─[%F{78}%n%F{248}@%F{37}%m%F{208}]%f - "
+  print -P "%F{208}\u250c[%F{78}%n%F{248}@%F{37}%m%F{208}]%f - "
 }
 
 yui_current_dir() {
@@ -27,6 +27,6 @@ function precmd() {
 }
 
 #PROMPT="%F{208}└─[%f$%F{208}]%f "
-PROMPT="%F{208}└─▶ %f"
+PROMPT=$'%F{208}\u2514\u25B7 %f'
 
 RPROMPT=[%*]
