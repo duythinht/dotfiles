@@ -27,6 +27,6 @@ function precmd() {
 }
 
 #PROMPT="%F{208}└─[%f$%F{208}]%f "
-PROMPT=$'%F{208}\u2514\u25ba %f'
+PROMPT=$'%F{208}\u2514\u25b9 %f'
 
 RPROMPT=[%*]
