@@ -26,7 +26,7 @@ Plugin 'gmarik/vundle'
 " original repos on github
 Plugin 'duythinht/inori'
 Plugin 'bling/vim-airline'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mattn/emmet-vim'
@@ -219,3 +219,4 @@ noremap <leader>R :RainbowToggle<CR>
 noremap gi :GoImports<CR>
 noremap <leader>o :on<CR>
 noremap <leader>m :TagbarToggle<CR>
+set encoding=utf8

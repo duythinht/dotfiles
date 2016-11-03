@@ -43,3 +43,4 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # Run this command to configure your shell:
 # eval $(docker-machine env)
+. /usr/share/autojump/autojump.sh
