@@ -46,6 +46,7 @@ Plugin 'mkitt/tabline.vim'
 Plugin 'luochen1990/rainbow'
 Plugin 'fatih/vim-go'
 Plugin 'fatih/vim-hclfmt'
+Plugin 'majutsushi/tagbar'
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
 Plugin 'L9'
@@ -154,7 +155,7 @@ let g:airline_symbols.whitespace = 'Ξ'
 
 
 " Command-T
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.o,*.obj,.git,*/vendor/*,*/target/*,*/build/*,*/node_modules/*,*.a
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.o,*.obj,.git,*/vendor/*,*/target/*,*/build/*,*/node_modules/*,*.a,*/bin/*
 
 " autocmd FileType python set omnifunc=pythoncomplete#Complete
 " autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
@@ -173,11 +174,15 @@ endfunc
 noremap <leader>DT :call DeleteTrailingWS()<CR>
 
 " open new tab
-noremap <leader>t <Esc>:tabnew<CR>
+noremap tn :tabnew<CR>
+noremap tc :tabclose<CR>
+noremap te :tabedit
 
 " auto insert end block
 inoremap {<CR>  {<CR>}<Esc>O
 inoremap [<CR>	[<CR>]<Esc>O<Tab>
+inoremap `` <Esc>
+vnoremap ` <Esc>
 
 " Silver searcher
 if executable('ag')
@@ -211,3 +216,6 @@ let g:rainbow_conf = {
     \}
 
 noremap <leader>R :RainbowToggle<CR>
+noremap gi :GoImports<CR>
+noremap <leader>o :on<CR>
+noremap <leader>m :TagbarToggle<CR>
