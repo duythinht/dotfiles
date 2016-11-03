@@ -4,11 +4,11 @@ case "$(uname)" in
 	"Darwin")
 		echo "Mac OS X"
 		ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-		brew install git mvim zsh tree
+		brew install git mvim zsh tree autojump
 	;;
 	"Linux")
 		sudo apt-get update
-		sudo apt-get install -y git zsh tree
+		sudo apt-get install -y git zsh tree autojump
 	;;
 esac
 
