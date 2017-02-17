@@ -12,8 +12,17 @@ set autoread
 set ruler
 set foldmethod=syntax
 set foldlevel=17
-set omnifunc=syntaxcomplete#Complete
+set nostartofline       " Do not jump to first character with page commands.
+"set omnifunc=syntaxcomplete#Complete
 filetype off                   " required!
+
+if !&scrolloff
+  set scrolloff=3       " Show next 3 lines while scrolling.
+endif
+if !&sidescrolloff
+  set sidescrolloff=3   " Show next 5 columns while side-scrolling.
+endif
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 
@@ -31,11 +40,15 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mattn/emmet-vim'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'rust-lang/rust.vim'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'tell-k/vim-autopep8'
 "Plugin 'klen/python-mode'
 "Plugin 'davidhalter/jedi-vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'l3nkz/ycmconf'
-Plugin 'derekwyatt/vim-scala'
+"Plugin 'derekwyatt/vim-scala'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
 Plugin 'mileszs/ack.vim'
@@ -46,7 +59,9 @@ Plugin 'mkitt/tabline.vim'
 Plugin 'luochen1990/rainbow'
 Plugin 'fatih/vim-go'
 Plugin 'fatih/vim-hclfmt'
+Plugin 'Shutnik/jshint2.vim'
 Plugin 'majutsushi/tagbar'
+Plugin 'diepm/vim-rest-console'
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
 Plugin 'L9'
@@ -57,7 +72,7 @@ Plugin 'L9'
 call vundle#end()
 
 filetype plugin indent on     " required!
-filetype on
+"filetype on
 
 " Hide MacVim scrollbar
 set guioptions-=r
@@ -91,17 +106,14 @@ set pastetoggle=<F2>
 " Generic setings
 
 set nowrap          " don't wrap lines
-set expandtab			  " tab by spaces
 set autoindent      " always set autoindenting on
-set cindent		      " copy the previous indentation on autoindenting
 set smartindent     " smart indent
 set number          " always show line numbers
 set relativenumber  " enter relativenumber mode
 set shiftround      " use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch       " set show matching parenthesis
 set smarttab        " insert tabs on the start of a line according to shiftwidth, not tabstop
-
-
+set cindent		      " copy the previous indentation on autoindenting
 set noswapfile	    " no swap files
 syntax enable       " enable syntax hightlight
 
@@ -119,33 +131,35 @@ set tabstop=2     " a tab is two spaces
 set backspace=2   " allow backspacing over everything in insert mode
 set shiftwidth=2  " number of spaces to use for autoindenting
 set softtabstop=2 "
+set expandtab
+set textwidth=99
+highlight ColorColumn ctermbg=233 guibg=#212121
+let &colorcolumn="".join(range(100,999), ",")
 
-" Indent for FileType
-autocmd FileType python setl sw=2 sts=2 et
-"autocmd FileType html setl sw=4 sts=4 et
+" Searching config
+set ignorecase          " Make searching case insensitive
+set smartcase           " ... unless the query has capital letters.
+set gdefault            " Use 'g' flag by default with :s/foo/bar/.
+set magic               " Use 'magic' patterns (extended regular expressions).
+set nohlsearch
+
+" Search and Replace
+nmap <Leader>s :%s//g<Left><Left>
+" neocomplete
+
 
 " Airline
 set laststatus=2
-let g:airline_theme="bubblegum"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:airline_theme="wombat"
 
 if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
+  let g:airline_symbols = {}
 endif
 
-" unicode symbols
-"let g:airline_left_sep = '»'
-"let g:airline_left_sep = '▶'
-"let g:airline_right_sep = '«'
-"let g:airline_right_sep = '◀'
-"let g:airline_symbols.linenr = '␊'
-"let g:airline_symbols.linenr = '␤'
-"let g:airline_symbols.linenr = '¶'
-"let g:airline_symbols.branch = '⎇'
-"let g:airline_symbols.paste = 'ρ'
-"let g:airline_symbols.paste = 'Þ'
-"let g:airline_symbols.paste = '∥'
-"let g:airline_symbols.whitespace = 'Ξ'
-"
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline_symbols.linenr = ''
@@ -153,16 +167,11 @@ let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = ''
 let g:airline_symbols.whitespace = 'Ξ'
 
-
 " Command-T
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.o,*.obj,.git,*/vendor/*,*/target/*,*/build/*,*/node_modules/*,*.a,*/bin/*
+set wildignore+=*/tmp/*,*.so,*.lock,*.swp,*.zip,*.pyc,*.o,*.obj,.git,*/vendor/*,*/target/*,*/build/*,*/node_modules/*,*.a,*/bin/*
 
-" autocmd FileType python set omnifunc=pythoncomplete#Complete
-" autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-" autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-" autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 map <C-n> :NERDTreeToggle<CR>
-let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore = ['\.pyc$', '\.lock$', 'vendor', 'bin/', 'pkg', 'target']
 
 "Remove trailling
 
@@ -171,18 +180,26 @@ func! DeleteTrailingWS()
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
-noremap <leader>DT :call DeleteTrailingWS()<CR>
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set nornu
+    set number
+  else
+    set rnu
+  endif
+endfunc
+
+" Toggle between normal and relative numbering.
+nnoremap <leader>r :call NumberToggle()<cr>
+
 
 " open new tab
-noremap tn :tabnew<CR>
-noremap tc :tabclose<CR>
-noremap te :tabedit
+noremap <leader>t <Esc>:tabnew<CR>
 
 " auto insert end block
 inoremap {<CR>  {<CR>}<Esc>O
 inoremap [<CR>	[<CR>]<Esc>O<Tab>
-inoremap `` <Esc>
-vnoremap ` <Esc>
 
 " Silver searcher
 if executable('ag')
@@ -216,7 +233,35 @@ let g:rainbow_conf = {
     \}
 
 noremap <leader>R :RainbowToggle<CR>
-noremap gi :GoImports<CR>
+
+" Close other
 noremap <leader>o :on<CR>
+" Tagbar
 noremap <leader>m :TagbarToggle<CR>
-set encoding=utf8
+
+" For Go development
+noremap gi :GoImports<CR>
+noremap gI :GoImport
+noremap gl :GoLint<CR>
+noremap ge :GoErrCheck<CR>
+
+" For rust development
+let g:rust_recommended_style = 0
+let g:racer_experimental_completer = 1
+
+" Syntastic config
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" jshint
+let jshint2_save = 1
+
+" auto pep8
+let g:autopep8_disable_show_diff=1
+
+"" autocmd
+autocmd BufWritePre <buffer> call DeleteTrailingWS()
+autocmd FileType python autocmd BufWritePre <buffer> call Autopep8()
+autocmd FileType go autocmd BufWritePre <buffer> :GoImports

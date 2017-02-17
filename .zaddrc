@@ -3,3 +3,5 @@ function tabname {
 }
 
 alias tn=tabname
+
+export PATH=$PATH:/Applications/p4merge.app/Contents/MacOS
