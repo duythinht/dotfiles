@@ -7,8 +7,8 @@ case "$(uname)" in
 		brew install git mvim zsh tree autojump
 	;;
 	"Linux")
-		sudo apt-get update
-		sudo apt-get install -y git zsh tree autojump
+		#sudo apt-get update
+		#sudo apt-get install -y git zsh tree autojump
 	;;
 esac
 
