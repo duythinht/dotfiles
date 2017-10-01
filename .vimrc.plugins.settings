@@ -1,0 +1,101 @@
+" airline {
+  set laststatus=2
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
+  let g:airline_theme="base16_chalk"
+
+  if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+
+  let g:airline_left_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_symbols.linenr = ''
+  let g:airline_symbols.branch = '⎇'
+  let g:airline_symbols.paste = ''
+  let g:airline_symbols.whitespace = 'ξ'
+" }
+
+
+" ack {
+  if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+  endif
+" }
+
+" nerdtree {
+  map <c-n> :NERDTreeToggle<cr>
+  let nerdtreeignore = ['\.pyc$', '\.lock$', 'vendor', 'bin/', 'pkg', 'target']
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" }
+
+" command-t {
+  set wildignore+=*/tmp/*,*.so,*.lock,*.swp,*.zip,*.pyc,*.o,*.obj,.git,*/vendor/*,*/target/*,*/build/*,*/node_modules/*,*.a,*/bin/*
+" }
+
+" tagbar {
+  noremap <leader>m :TagbarToggle<CR>
+" }
+
+" youcompleteme {
+  "let g:ycm_auto_trigger = 0
+" }
+
+" syntastic {
+  let g:syntastic_always_populate_loc_list = 0
+  let g:syntastic_auto_loc_list = 0
+  let g:syntastic_check_on_open = 0
+  let g:syntastic_check_on_wq = 0
+" }
+
+" jshint {
+  let jshint2_save = 1
+" }
+
+" autopep8 {
+  let g:autopep8_disable_show_diff=1
+  augroup vimrc_write
+    au!
+    au FileType python autocmd BufWritePre <buffer> call Autopep8()
+  augroup end
+" }
+
+" GoLang {
+  au FileType go nmap gi :GoImports<CR>
+  au FileType go nmap gI :GoImport<Space>
+  au FileType go nmap gl :GoLint<CR>
+  au FileType go nmap ge :GoErrCheck<CR>
+" }
+
+" Rust {
+  "let g:rust_recommended_style = 0
+  let g:syntastic_rust_checkers = ['cargo']
+  let g:rustfmt_autosave = 1
+" }
+"
+
+" lsp {
+  set hidden
+  set noshowmode " for echodoc
+  let g:LanguageClient_serverCommands = {
+        \  'rust': ['rustup', 'run', 'nightly', 'rls'],
+        \}
+
+  " Automatically start language servers.
+  let g:LanguageClient_autoStart = 1
+  let g:deoplete#enable_at_startup = 1
+
+  inoremap <silent><expr> <TAB>
+		\ pumvisible() ? "\<C-n>" :
+		\ <SID>check_back_space() ? "\<TAB>" :
+		\ deoplete#mappings#manual_complete()
+		function! s:check_back_space() abort "{{{
+		let col = col('.') - 1
+		return !col || getline('.')[col - 1]  =~ '\s'
+		endfunction"}}}
+
+  nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+  nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+  nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+" }

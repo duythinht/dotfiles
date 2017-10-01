@@ -37,7 +37,7 @@ yui_count_job() {
 }
 
 function precmd() {
-  print -P $(yui_decor)$(yui_user_at_host)$(yui_sep)$(yui_current_dir)$(yui_sep)$(yui_count_job)$(yui_git_branch)$(yui_end)
+  print -P $(yui_sep)$(yui_user_at_host)$(yui_sep)$(yui_current_dir)$(yui_sep)$(yui_count_job)$(yui_git_branch)$(yui_end)
 }
 
 #PROMPT=$'%F{208}\u2514\u25ba %f'

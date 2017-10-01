@@ -5,3 +5,10 @@ function tabname {
 alias tn=tabname
 
 export PATH=$PATH:/Applications/p4merge.app/Contents/MacOS
+export GOPATH=~/workspace/go
+export PATH=$PATH:$GOPATH/bin
+export AIRFLOW_HOME=/workspace/airflow/home/
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+kb

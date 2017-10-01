@@ -1,0 +1,23 @@
+func! Delete_trailing()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+
+func! Numbers_toggle()
+  if(&relativenumber == 1)
+    set nornu
+    set number
+  else
+    set rnu
+  endif
+endfunc
+
+func! Scrolloff_ensure() " set scrolloff
+  if !&scrolloff
+    set scrolloff=3       " Show next 3 lines while scrolling.
+  endif
+  if !&sidescrolloff
+    set sidescrolloff=3   " Show next 5 columns while side-scrolling.
+  endif
+endfunc
