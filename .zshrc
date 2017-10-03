@@ -10,6 +10,7 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory autocd beep extendedglob nomatch notify
 bindkey -v
+bindkey jj vi-cmd-mode
 bindkey '^R' history-incremental-search-backward
 bindkey '^B' beginning-of-line
 bindkey '^E' end-of-line
