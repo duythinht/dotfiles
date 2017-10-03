@@ -100,7 +100,6 @@
 " Search and text replace {
   set ignorecase          " Make searching case insensitive
   set smartcase           " ... unless the query has capital letters.
-  set gdefault            " Use 'g' flag by default with :s/foo/bar/.
   set magic               " Use 'magic' patterns (extended regular expressions).
   set nohlsearch
 
