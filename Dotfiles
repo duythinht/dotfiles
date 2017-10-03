@@ -11,3 +11,5 @@
 .vimrc.bundles
 .vimrc.fn
 .vimrc.plugins.settings
+.gitconfig
+.gitignore
