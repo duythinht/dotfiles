@@ -1,0 +1,8 @@
+opentmux="tmux a || tmux"
+ls="ls --color=auto"
+dm="docker-machine"
+please="sudo"
+pacman="sudo pacman"
+vim="nvim"
+vol='amixer -c 1 sset Master'
+screenshot='sleep 2;import -window root ~/$(date '+%Y%m%d-%H%M%S').png'

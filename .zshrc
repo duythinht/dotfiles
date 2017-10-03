@@ -32,14 +32,11 @@ compinit
 # End of lines added by compinstall
 
 # Enable prompt themes
-autoload -U promptinit
-promptinit
-[ -f ~/.zsh.theme ] && source ~/.zsh.theme
+[ -f ~/.zshrc.theme ] && source ~/.zshrc.theme
 # Fix ls colors
-export LSCOLORS="gxfxcxdxbxegedabagacad"
-export LS_COLORS='di=0;36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:'
-# End of prompt theme
 
 # Run commands alias
-[ -f ~/.alias ] && while read line; do eval "alias $line"; done < ~/.alias
-[ -f ~/.zaddrc ] && source ~/.zaddrc
+[ -f ~/.zshrc.linux ] && source ~/.zshrc.linux
+[ -f ~/.zshrc.osx ] && source ~/.zshrc.osx
+[ -f ~/.zshrc.alias.linux ] && while read line; do eval "alias $line"; done < ~/.zshrc.alias.linux
+[ -f ~/.zshrc.alias.osx ] && while read line; do eval "alias $line"; done < ~/.zshrc.alias.osx

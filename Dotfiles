@@ -1,9 +1,11 @@
-.zaddrc
+.zshrc
+.zshrc.theme
+.zshrc.alias.linux
+.zshrc.alias.osx
+.zshrc.linux
+.zshrc.osx
 .gvimrc
 .tmux.conf
-.zshrc
-.alias
-.zsh.theme
 .zlogin
 .vimrc
 .vimrc.bundles
