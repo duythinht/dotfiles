@@ -1,0 +1,5 @@
+[user]
+	email = duythinht@gmail.com
+	name = Thinh Tran
+[core]
+	excludesfile = /home/duythinht/.gitignore
