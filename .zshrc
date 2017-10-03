@@ -47,7 +47,13 @@ compinit
 # Fix ls colors
 
 # Run commands alias
-[ -f ~/.zshrc.linux ] && source ~/.zshrc.linux
-[ -f ~/.zshrc.osx ] && source ~/.zshrc.osx
-[ -f ~/.zshrc.alias.linux ] && while read line; do eval "alias $line"; done < ~/.zshrc.alias.linux
-[ -f ~/.zshrc.alias.osx ] && while read line; do eval "alias $line"; done < ~/.zshrc.alias.osx
+case $(uname) in
+Linux)
+  [ -f ~/.zshrc.linux ] && source ~/.zshrc.linux
+  [ -f ~/.zshrc.alias.linux ] && while read line; do eval "alias $line"; done < ~/.zshrc.alias.linux
+  ;;
+Darwin)
+  [ -f ~/.zshrc.osx ] && source ~/.zshrc.osx
+  [ -f ~/.zshrc.alias.osx ] && while read line; do eval "alias $line"; done < ~/.zshrc.alias.osx
+  ;;
+esac
