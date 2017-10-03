@@ -10,7 +10,11 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory autocd beep extendedglob nomatch notify
 bindkey -v
+# use jj to enter vim cmd mode
 bindkey jj vi-cmd-mode
+export KEYTIMEOUT=20
+
+# ctrl + to get old command
 bindkey '^R' history-incremental-search-backward
 bindkey '^B' beginning-of-line
 bindkey '^E' end-of-line
