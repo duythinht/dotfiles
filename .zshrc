@@ -2,6 +2,12 @@ if [ -z "$TMUX" ]; then
   tmux a || tmux new
 fi
 
+if [ -x "$(command -v nvim)" ]; then
+  export EDITOR=nvim
+else
+  export EDITOR=vim
+fi
+
 export TERM=xterm-256color
 
 # Lines configured by zsh-newuser-install
