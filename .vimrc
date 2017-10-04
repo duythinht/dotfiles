@@ -69,18 +69,16 @@
   map <C-l> <C-w>l
 
   " Setting for quick copy & paste
-  vmap <Leader>y "+y
-  vmap <Leader>d "+d
-  nmap <Leader>yy "+yy
-  nmap <Leader>p "+p
-  nmap <Leader>P "+P
-  vmap <Leader>p "+p
-  vmap <Leader>P "+P
+  vnoremap Y "+y
+  vnoremap D "+d
+  nnoremap YY "+yy
+  nnoremap P "+p
+  vnoremap P "+p
 
-  " Binding paste mode
-  set pastetoggle=<F2>
-  " open new tab
-  noremap <leader>t <Esc>:tabnew<CR>
+  " tab
+  noremap tn :tabnew<CR>
+  noremap tc :tabclose<CR>
+  noremap tt gt.
   " yank from cursor to end of line
   nnoremap Y y$
   " Toggle between normal and relative numbering.
