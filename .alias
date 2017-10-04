@@ -1,9 +1,0 @@
-opentmux="tmux a || tmux"
-ls="ls -G"
-dm="docker-machine"
-please="sudo"
-pacman="sudo pacman"
-vim="nvim"
-vol='amixer -c 1 sset Master'
-screenshot='sleep 2;import -window root ~/$(date '+%Y%m%d-%H%M%S').png'
-kb='xset r rate 200 30'
