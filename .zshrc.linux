@@ -2,3 +2,4 @@ xset r rate 200 30 # config for quick kb input
 export AIRFLOW_HOME=/workspace/airflow/home/
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+export PATH=$PATH:$HOME/.bin/

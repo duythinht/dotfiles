@@ -34,7 +34,7 @@
   set cindent		      " copy the previous indentation on autoindenting
   set noswapfile	    " no swap files
   set signcolumn=yes
-  syntax enable       " enable syntax hightlight
+  syntax off       " enable syntax hightlight
 " }
 "
 
@@ -48,13 +48,25 @@
 " }
 
 " UI, colorscheme {
+  " set mono world
   set background=dark
-  silent! colorscheme inori
+  "silent! colorscheme inori
+  hi Normal ctermbg=237 ctermfg=254
+  hi ColorColumn ctermbg=239
+  hi Search ctermbg=241
+  hi SignColumn ctermbg=237
+  hi LineNr ctermfg=250
+  hi CursorLineNr ctermfg=250
+  hi Tabline cterm=none ctermbg=239 ctermfg=254
+  hi TabLineFill cterm=none ctermbg=239
+  "hi StatusLine cterm=none ctermbg=238
+  "hi StatusLineNC cterm=none ctermbg=250
+  hi CursorLine cterm=bold ctermbg=255
+  hi MatchParen ctermbg=250
+  hi Pmenu ctermbg=238 ctermfg=254
 
-  highlight ColorColumn ctermbg=233 guibg=#212121
   let &colorcolumn="".join(range(100,999), ",")
 " }
-"
 
 " Keyboard && remapping mapping {
 
@@ -79,8 +91,9 @@
   noremap tn :tabnew<CR>
   noremap tc :tabclose<CR>
   noremap tt gt.
-  " yank from cursor to end of line
-  nnoremap Y y$
+
+  noremap qq :q<CR>
+  noremap wq :wq<CR>
   " Toggle between normal and relative numbering.
   nnoremap <leader>r :call Numbers_toggle()<cr>
   " auto insert end block

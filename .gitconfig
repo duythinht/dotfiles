@@ -1,5 +1,7 @@
 [user]
 	email = duythinht@gmail.com
 	name = Thinh Tran
+	signingkey = duythinht@gmail.com
 [core]
+  editor = nvim
 	excludesfile = /home/duythinht/.gitignore

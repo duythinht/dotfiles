@@ -1,5 +1,5 @@
 opentmux="tmux a || tmux"
-ls="ls --color=auto"
+ll="ls --color=auto -lh"
 dm="docker-machine"
 please="sudo"
 pacman="sudo pacman"
