@@ -26,12 +26,14 @@
 
 " nerdtree {
   map <leader>n :NERDTreeToggle<cr>
-  let nerdtreeignore = ['\.pyc$', '\.lock$', 'vendor', 'bin/', 'pkg', 'target']
+  let NERDTreeIgnore = ['\.pyc$', '\.lock$', 'vendor', 'bin/', 'pkg', 'target', '__pycache__']
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " }
 
 " command-t {
-  set wildignore+=*/tmp/*,*.so,*.lock,*.swp,*.zip,*.pyc,*.o,*.obj,.git,*/vendor/*,*/target/*,*/build/*,*/node_modules/*,*.a,*/bin/*
+  set wildignore+=*.so,*.lock,*.swp,*.zip,*.o,*.obj,.git,*.a
+  set wildignore+=tmp,vendor,target,build,node_modules,bin
+  set wildignore+=*.pyc,*.pyo,__pycache__
 " }
 
 " tagbar {

@@ -52,16 +52,16 @@
   set background=dark
   "silent! colorscheme inori
   hi Normal ctermbg=237 ctermfg=254
-  hi ColorColumn ctermbg=239
+  hi ColorColumn ctermbg=236
   hi Search ctermbg=241
   hi SignColumn ctermbg=237
   hi LineNr ctermfg=250
   hi CursorLineNr ctermfg=250
-  hi Tabline cterm=none ctermbg=239 ctermfg=254
-  hi TabLineFill cterm=none ctermbg=239
+  hi Tabline cterm=none ctermbg=236 ctermfg=254
+  hi TabLineFill cterm=none ctermbg=236
   "hi StatusLine cterm=none ctermbg=238
   "hi StatusLineNC cterm=none ctermbg=250
-  hi CursorLine cterm=bold ctermbg=255
+  hi CursorLine cterm=bold ctermbg=236
   hi MatchParen ctermbg=250
   hi Pmenu ctermbg=238 ctermfg=254
 
