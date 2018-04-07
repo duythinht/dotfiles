@@ -73,9 +73,9 @@
   "let g:rust_recommended_style = 0
   let g:syntastic_rust_checkers = ['cargo']
   let g:rustfmt_autosave = 1
+  let g:racer_experimental_completer = 1
 " }
-"
-"
+
 " Supertab {
   let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 " }
