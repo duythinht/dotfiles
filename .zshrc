@@ -1,4 +1,4 @@
-if [ -z "$TMUX" ]; then
+if [ -x "$(command -v tmux)" ] && [ -z "$TMUX" ]; then
   tmux a || tmux new
 fi
 
@@ -57,3 +57,5 @@ Darwin)
   [ -f ~/.zshrc.alias.osx ] && while read line; do eval "alias $line"; done < ~/.zshrc.alias.osx
   ;;
 esac
+
+[[ -s "/Users/duythinht/.gvm/scripts/gvm" ]] && source "/Users/duythinht/.gvm/scripts/gvm"

@@ -65,7 +65,8 @@
   hi MatchParen ctermbg=250
   hi Pmenu ctermbg=238 ctermfg=254
 
-  let &colorcolumn="".join(range(100,999), ",")
+"  let &colorcolumn="".join(range(100,999), ",")
+  set colorcolumn=+1
 " }
 
 " Keyboard && remapping mapping {
@@ -109,7 +110,7 @@
 " }
 
 " Search and text replace {
-  set ignorecase          " Make searching case insensitive
+  set noignorecase          " Make searching case insensitive
   set smartcase           " ... unless the query has capital letters.
   set magic               " Use 'magic' patterns (extended regular expressions).
   set nohlsearch
@@ -125,6 +126,12 @@
   endif
 " }
 
+" Auto complete {
+  set omnifunc=syntaxcomplete#Complete
+  set completeopt=longest,menuone
+"}
+
 " Auto cmd {
   autocmd BufWritePre <buffer> call Delete_trailing()
 " }
+"
