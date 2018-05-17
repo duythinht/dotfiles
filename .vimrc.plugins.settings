@@ -67,6 +67,7 @@
   au FileType go nmap gi :GoImports<CR>
   au FileType go nmap gI :GoImport<Space>
   au FileType go nmap gl :GoLint<CR>
+  au FileType go ab goie if err != nil { return err }
 " }
 
 " Rust {
@@ -74,6 +75,7 @@
   let g:syntastic_rust_checkers = ['cargo']
   let g:rustfmt_autosave = 1
   let g:racer_experimental_completer = 1
+  au FileType rust abbrev println println!
 " }
 
 " Supertab {

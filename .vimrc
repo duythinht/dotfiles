@@ -62,7 +62,7 @@
   "hi StatusLine cterm=none ctermbg=238
   "hi StatusLineNC cterm=none ctermbg=250
   hi CursorLine cterm=bold ctermbg=236
-  hi MatchParen ctermbg=250
+  hi MatchParen ctermbg=none ctermfg=1
   hi Pmenu ctermbg=238 ctermfg=254
 
 "  let &colorcolumn="".join(range(100,999), ",")
@@ -127,7 +127,7 @@
 " }
 
 " Auto complete {
-  set omnifunc=syntaxcomplete#Complete
+  "set omnifunc=syntaxcomplete#Complete
   set completeopt=longest,menuone
 "}
 
