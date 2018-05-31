@@ -3,5 +3,5 @@
 	name = Thinh Tran
 	signingkey = duythinht@gmail.com
 [core]
-  editor = nvim
+  editor = vim
 	excludesfile = /home/duythinht/.gitignore

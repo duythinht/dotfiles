@@ -19,4 +19,14 @@ Plug 'diepm/vim-rest-console'
 Plug 'racer-rust/vim-racer'
 " Plugin for autocomplete
 Plug 'Shougo/echodoc.vim'
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+Plug 'zchee/deoplete-go', { 'do': 'make'}

@@ -3,7 +3,7 @@
   set statusline+=%#warningmsg#
   set statusline+=%{SyntasticStatuslineFlag()}
   set statusline+=%*
-  let g:airline_theme="base16_grayscale"
+  let g:airline_theme="qwq"
 
   if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -79,5 +79,10 @@
 " }
 
 " Supertab {
-  let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+  "let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+" }
+"
+" Deoplete {
+  let g:deoplete#enable_at_startup = 1
+  inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " }
