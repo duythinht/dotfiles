@@ -9,39 +9,36 @@ yui_git_branch() {
     if [[ "$branch" == "HEAD" ]]; then
       branch='detached*'
     fi
-    print -P $(yui_sep)"\u2387 $branch"
+    echo " $(yui_sep) \u2387 $branch"
   fi
 }
 
 yui_user_at_host() {
-  print -P "%n[at]%m"
-}
-
-yui_end() {
-  print -P " \u276F"
-}
-
-yui_decor() {
-  # print -P "%B\u262D %b"
-  # print -P "\u267A "
-  # print -P "\u2740 "
+  print -P "%F{65}%n[at]%m%f"
 }
 
 yui_sep() {
-  print -P " \u262d "
+  #echo " \u262d "
+  echo "%F{178}\u267A%f"
+}
+
+yui_arrow() {
+  echo "\u276F"
 }
 
 yui_current_dir() {
   print -P "%~"
 }
 yui_count_job() {
-  print -P '%!'
+  print -P "%!"
 }
 
 function precmd() {
-  print -P $(yui_sep)$(yui_user_at_host)$(yui_sep)$(yui_current_dir)$(yui_sep)$(yui_count_job)$(yui_git_branch)$(yui_end)
+  print -P "$(yui_sep) $(yui_user_at_host) $(yui_sep) $(yui_current_dir) $(yui_sep) $(yui_count_job)$(yui_git_branch) $(yui_arrow)"
 }
 
-#PROMPT=$'\u2514\u25ba '
-PROMPT=$'\u276F\u276F\u276F '
-RPROMPT=[%*]
+yui_prompt() {
+  echo "%F{196}$(yui_arrow)%F{220}$(yui_arrow)%F{10}$(yui_arrow) %f"
+}
+
+PROMPT=$(yui_prompt)
