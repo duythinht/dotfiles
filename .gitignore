@@ -1,6 +1,4 @@
 *.pyc
 *.orig
-.envrc
-application
+__pycache__/
 dist/
-ENVIRONMENT

@@ -22,8 +22,12 @@ yui_sep() {
   echo "%F{178}\u267A%f"
 }
 
-yui_arrow() {
-  echo "\u276F"
+yui_line_1_end() {
+  echo "\uf56b"
+}
+
+yui_console_input() {
+  echo "\uf105"
 }
 
 yui_current_dir() {
@@ -34,11 +38,11 @@ yui_count_job() {
 }
 
 function precmd() {
-  print -P "$(yui_sep) $(yui_user_at_host) $(yui_sep) $(yui_current_dir) $(yui_sep) $(yui_count_job)$(yui_git_branch) $(yui_arrow)"
+  print -P "$(yui_sep) $(yui_user_at_host) $(yui_sep) $(yui_current_dir) $(yui_sep) $(yui_count_job)$(yui_git_branch) $(yui_line_1_end)"
 }
 
 yui_prompt() {
-  echo "%F{196}$(yui_arrow)%F{220}$(yui_arrow)%F{10}$(yui_arrow) %f"
+  echo "%F{196}$(yui_console_input)%F{220}$(yui_console_input)%F{10}$(yui_console_input) %f"
 }
 
 PROMPT=$(yui_prompt)

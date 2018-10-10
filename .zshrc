@@ -1,4 +1,4 @@
-if [ -x "$(command -v tmux)" ] && [ -z "$TMUX" ]; then
+if [ -z "$TMUX" ]; then
   tmux a || tmux new
 fi
 
@@ -15,9 +15,9 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory autocd beep extendedglob nomatch notify
-bindkey -v
+bindkey -e
 # use jj to enter vim cmd mode
-bindkey jj vi-cmd-mode
+# bindkey jj vi-cmd-mode
 export KEYTIMEOUT=20
 
 # ctrl + to get old command
@@ -57,8 +57,3 @@ Darwin)
   [ -f ~/.zshrc.alias.osx ] && while read line; do eval "alias $line"; done < ~/.zshrc.alias.osx
   ;;
 esac
-
-[[ -s "/Users/duythinht/.gvm/scripts/gvm" ]] && source "/Users/duythinht/.gvm/scripts/gvm"
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"

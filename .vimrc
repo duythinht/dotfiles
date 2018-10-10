@@ -51,7 +51,7 @@
   " set mono world
   set background=dark
   silent! colorscheme inori
-  hi Normal ctermbg=235 ctermfg=252
+  hi Normal ctermbg=235 ctermfg=255
   "hi ColorColumn ctermbg=236
   "hi Search ctermbg=241
   "hi SignColumn ctermbg=237
@@ -59,14 +59,13 @@
   "hi CursorLineNr ctermfg=250
   "hi Tabline cterm=none ctermbg=236 ctermfg=254
   "hi TabLineFill cterm=none ctermbg=236
-  "hi StatusLine cterm=none ctermbg=238
-  "hi StatusLineNC cterm=none ctermbg=250
+  ""hi StatusLine cterm=none ctermbg=238
+  ""hi StatusLineNC cterm=none ctermbg=250
   "hi CursorLine cterm=bold ctermbg=236
-  "hi MatchParen ctermbg=none ctermfg=1
+  "hi MatchParen ctermbg=250
   "hi Pmenu ctermbg=238 ctermfg=254
 
-"  let &colorcolumn="".join(range(100,999), ",")
-  set colorcolumn=+1
+  "let &colorcolumn="".join(range(100,999), ",")
 " }
 
 " Keyboard && remapping mapping {
@@ -110,7 +109,7 @@
 " }
 
 " Search and text replace {
-  set noignorecase          " Make searching case insensitive
+  set ignorecase          " Make searching case insensitive
   set smartcase           " ... unless the query has capital letters.
   set magic               " Use 'magic' patterns (extended regular expressions).
   set nohlsearch
@@ -126,12 +125,6 @@
   endif
 " }
 
-" Auto complete {
-  "set omnifunc=syntaxcomplete#Complete
-  set completeopt=longest,menuone
-"}
-
 " Auto cmd {
   autocmd BufWritePre <buffer> call Delete_trailing()
 " }
-"
