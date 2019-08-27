@@ -18,31 +18,32 @@ yui_user_at_host() {
 }
 
 yui_sep() {
-  #echo " \u262d "
   echo "%F{178}\u267A%f"
 }
 
-yui_line_1_end() {
-  echo "\uf56b"
-}
-
-yui_console_input() {
-  echo "\uf105"
+yui_arrow() {
+  echo "\u276F"
 }
 
 yui_current_dir() {
   print -P "%~"
 }
+
 yui_count_job() {
   print -P "%!"
 }
 
+yui_k8s_current_context() {
+    print -P "$(kubectl config current-context)"
+}
+
 function precmd() {
-  print -P "$(yui_sep) $(yui_user_at_host) $(yui_sep) $(yui_current_dir) $(yui_sep) $(yui_count_job)$(yui_git_branch) $(yui_line_1_end)"
+    print -P "$(yui_sep) $(yui_user_at_host) $(yui_sep) $(yui_current_dir) $(yui_sep) $(yui_count_job)$(yui_git_branch) $(yui_sep) $(yui_k8s_current_context) $(yui_arrow)"
 }
 
 yui_prompt() {
-  echo "%F{196}$(yui_console_input)%F{220}$(yui_console_input)%F{10}$(yui_console_input) %f"
+  echo "%F{196}$(yui_arrow)%F{220}$(yui_arrow)%F{10}$(yui_arrow) %f"
 }
 
 PROMPT=$(yui_prompt)
+RPROMPT=[%*]

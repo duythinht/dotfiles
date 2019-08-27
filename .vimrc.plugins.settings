@@ -3,7 +3,7 @@
   set statusline+=%#warningmsg#
   set statusline+=%{SyntasticStatuslineFlag()}
   set statusline+=%*
-  let g:airline_theme="base16_grayscale"
+  let g:airline_theme="qwq"
 
   if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -26,7 +26,7 @@
 
 " nerdtree {
   map <leader>n :NERDTreeToggle<cr>
-  let NERDTreeIgnore = ['\.pyc$', '\.lock$', 'vendor', 'bin/', 'pkg', 'target', '__pycache__']
+  let NERDTreeIgnore = ['\.pyc$', '\.lock$', 'vendor', 'bin/', 'target', '__pycache__']
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " }
 
@@ -34,6 +34,9 @@
   set wildignore+=*.so,*.lock,*.swp,*.zip,*.o,*.obj,.git,*.a
   set wildignore+=tmp,vendor,target,build,node_modules,bin
   set wildignore+=*.pyc,*.pyo,__pycache__
+  "set wildignore+=/pkg
+  "let g:ctrlp_root_markers = ['pom.xml', '.p4ignore', '.gitignore']
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 " }
 
 " tagbar {
@@ -66,39 +69,31 @@
 " GoLang {
   au FileType go nmap gi :GoImports<CR>
   au FileType go nmap gI :GoImport<Space>
-  au FileType go nmap gl :GoLint<CR>
-  au FileType go nmap ge :GoErrCheck<CR>
+  "au FileType go nmap gl :GoLint<CR>
+  au FileType go ab goie if err != nil { return err }
+  "let g:deoplete#sources#go#gocode_binary = '/Users/duythinht/.gvm/pkgsets/go1.11/global/bin/gocode'
 " }
 
 " Rust {
   "let g:rust_recommended_style = 0
   let g:syntastic_rust_checkers = ['cargo']
   let g:rustfmt_autosave = 1
+  let g:racer_experimental_completer = 1
+  "au FileType rust abbrev println println!
+" }
+
+" Supertab {
+  let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 " }
 "
-
-" lsp {
-  set hidden
-  set noshowmode " for echodoc
-  let g:LanguageClient_serverCommands = {
-        \  'rust': ['rustup', 'run', 'nightly', 'rls'],
-        \  'python': ['pyls'],
-        \}
-
-  " Automatically start language servers.
-  let g:LanguageClient_autoStart = 1
-  let g:deoplete#enable_at_startup = 1
-
-  inoremap <silent><expr> <TAB>
-		\ pumvisible() ? "\<C-n>" :
-		\ <SID>check_back_space() ? "\<TAB>" :
-		\ deoplete#mappings#manual_complete()
-		function! s:check_back_space() abort "{{{
-		let col = col('.') - 1
-		return !col || getline('.')[col - 1]  =~ '\s'
-		endfunction"}}}
-
-  nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-  nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-  nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+" Language server {
+    "let g:LanguageClient_useVirtualText = 0
+    "let g:LanguageClient_serverCommands = {
+       \ }
+    "autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
+    "nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+    " Or map each action separately
+    "nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+    "nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+    "nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 " }

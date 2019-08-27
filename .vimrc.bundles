@@ -2,29 +2,26 @@ Plug 'duythinht/inori'
 Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'mattn/emmet-vim'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Shougo/neocomplete.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'tell-k/vim-autopep8'
-"Plug 'Valloric/YouCompleteMe'
-"Plug 'l3nkz/ycmconf'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'tfnico/vim-gradle'
+"Plug 'tfnico/vim-gradle'
 Plug 'chase/vim-ansible-yaml'
-Plug 'mkitt/tabline.vim'
-Plug 'luochen1990/rainbow'
-Plug 'fatih/vim-go'
-Plug 'Shutnik/jshint2.vim'
+"Plug 'luochen1990/rainbow'
+"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'majutsushi/tagbar'
 Plug 'diepm/vim-rest-console'
+"Plug 'racer-rust/vim-racer'
 " Plugin for autocomplete
 Plug 'Shougo/echodoc.vim'
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'ervandew/supertab'
+"Plug 'myitcv/govim'
+
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'fatih/vim-go'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
-Plug 'Shougo/denite.nvim'
