@@ -52,5 +52,3 @@ Darwin)
   [ -f ~/.zshrc.alias.osx ] && while read line; do eval "alias $line"; done < ~/.zshrc.alias.osx
   ;;
 esac
-
-source /Users/duythinht/.anh-xe-om-rc

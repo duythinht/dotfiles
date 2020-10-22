@@ -34,7 +34,9 @@ yui_count_job() {
 }
 
 yui_k8s_current_context() {
-    print -P "$(kubectl config current-context)"
+    if [ -x "$(command -v kubectl)" ]; then
+        print -P "$(kubectl config current-context)"
+    fi
 }
 
 function precmd() {

@@ -1,7 +1,4 @@
-
 export PATH=$PATH:/Applications/p4merge.app/Contents/MacOS
-
-[ -x "$(command -v kubectl)" ] && source <(kubectl completion zsh)
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 export LSCOLORS="gxfxcxdxbxegedabagacad"
@@ -18,13 +15,19 @@ if [ -f '/Users/duythinht/workspace/system/google-cloud-sdk/path.zsh.inc' ]; the
 export GOPATH=$HOME/.go
 export PATH=$PATH:/$GOPATH/bin
 
-# Direnv
-eval "$(direnv hook zsh)"
 export GPG_TTY=$(tty)
 export WORKSPACE=$HOME/workspace
 export CLICOLOR=1
 
-source <(kubectl completion zsh)
-source <(helm completion zsh)
-source ~/.zshrc.kubectl
-source ~/.zshrc.works
+if [ -x "$(command -v kubectl)" ]; then
+    source <(kubectl completion zsh)
+    source ~/.zshrc.kubectl
+fi
+
+if [ -x "$(command -v helm)" ]; then
+    source <(helm completion zsh)
+fi
+
+if [ -x "$(command -v direnv)" ]; then
+    eval "$(direnv hook zsh)"
+fi
