@@ -1,9 +1,9 @@
 .zshrc
 .zshrc.theme
 .zshrc.alias.linux
-.zshrc.alias.osx
+.zshrc.alias.macos
 .zshrc.linux
-.zshrc.osx
+.zshrc.macos
 .gvimrc
 .tmux.conf
 .zlogin

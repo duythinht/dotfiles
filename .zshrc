@@ -48,7 +48,7 @@ Linux)
   [ -f ~/.zshrc.alias.linux ] && while read line; do eval "alias $line"; done < ~/.zshrc.alias.linux
   ;;
 Darwin)
-  [ -f ~/.zshrc.osx ] && source ~/.zshrc.osx
-  [ -f ~/.zshrc.alias.osx ] && while read line; do eval "alias $line"; done < ~/.zshrc.alias.osx
+  [ -f ~/.zshrc.macos ] && source ~/.zshrc.macos
+  [ -f ~/.zshrc.alias.macos ] && while read line; do eval "alias $line"; done < ~/.zshrc.alias.macos
   ;;
 esac
